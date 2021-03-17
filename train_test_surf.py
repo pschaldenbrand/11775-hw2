@@ -14,8 +14,8 @@ import time
 # Train SVM
 
 list_videos = 'labels/trainval.csv'
-feat_dirs = ['resnet_avgpool_feat', 'resnet_3d_feat', 'r2plus1d_18_feat', 'mc3_18_feat']
-output_file = 'models/best.model'
+feat_dirs = ['surf_bof']#['resnet_avgpool_feat', 'resnet_3d_feat', 'r2plus1d_18_feat', 'mc3_18_feat']
+output_file = 'models/surf.model'#'models/best.model'
 
 factor = 1
 std = 0.1
@@ -119,7 +119,7 @@ start_time = time.time()
 pred_classes = mlp.predict(X)
 
 # 4. save for submission
-with open('best.csv', "w") as f:
+with open('surf.csv', "w") as f:
   f.writelines("Id,Category\n")
   for i, pred_class in enumerate(pred_classes):
     f.writelines("%s,%d\n" % (video_ids[i], pred_class))
